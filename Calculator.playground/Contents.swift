@@ -38,18 +38,15 @@ class Calculator {
     func calculate(operator op: String, firstNumber: Double, secondNumber: Double) -> Double {
         switch op {
         case "+":
-            return firstNumber + secondNumber
+            return AddOperation().add(firstNumber, secondNumber)
         case "-":
-            return firstNumber - secondNumber
+            return SubstractOperation().substract(firstNumber, secondNumber)
         case "*":
-            return firstNumber * secondNumber
+            return MultiplyOperation().multiply(firstNumber, secondNumber)
         case "/":
-            return firstNumber / secondNumber
+            return DivideOperation().divide(firstNumber, secondNumber)
         case "%":
-            guard secondNumber != 0 else {
-                return .infinity
-            }
-            return firstNumber.truncatingRemainder(dividingBy: secondNumber)
+            return RemainderOperation().remainder(firstNumber, secondNumber)
         default:
             return 0
         }
