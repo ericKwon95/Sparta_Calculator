@@ -12,6 +12,11 @@ class Calculator {
             return firstNumber * secondNumber
         case "/":
             return firstNumber / secondNumber
+        case "%":
+            guard secondNumber != 0 else {
+                return .infinity
+            }
+            return firstNumber.truncatingRemainder(dividingBy: secondNumber)
         default:
             return 0
         }
@@ -23,3 +28,5 @@ let addResult = calculator.calculate(operator: "+", firstNumber: 10, secondNumbe
 let subResult = calculator.calculate(operator: "-", firstNumber: 10, secondNumber: 20)
 let mulResult = calculator.calculate(operator: "*", firstNumber: 10, secondNumber: 20)
 let divResult = calculator.calculate(operator: "/", firstNumber: 10, secondNumber: 20)
+let modResult = calculator.calculate(operator: "%", firstNumber: 10, secondNumber: 20)
+let modResultWithZero = calculator.calculate(operator: "%", firstNumber: 10, secondNumber: 0)
