@@ -1,5 +1,38 @@
 import Foundation
 
+class AddOperation {
+    func add(_ a: Double, _ b: Double) -> Double {
+        return a + b
+    }
+}
+
+class SubstractOperation {
+    func substract(_ a: Double, _ b: Double) -> Double {
+        return a - b
+    }
+}
+
+class MultiplyOperation {
+    func multiply(_ a: Double, _ b: Double) -> Double {
+        return a * b
+    }
+}
+
+class DivideOperation {
+    func divide(_ a: Double, _ b: Double) -> Double {
+        return a / b
+    }
+}
+
+class RemainderOperation {
+    func remainder(_ a: Double, _ b: Double) -> Double {
+        guard b != 0 else {
+            return .infinity
+        }
+        return a.truncatingRemainder(dividingBy: b)
+    }
+}
+
 class Calculator {
     
     func calculate(operator op: String, firstNumber: Double, secondNumber: Double) -> Double {
