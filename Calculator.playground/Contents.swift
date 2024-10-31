@@ -39,28 +39,15 @@ class RemainderOperation: AbstractOperation {
 
 class Calculator {
     
-    func calculate(operator op: String, firstNumber: Double, secondNumber: Double) -> Double {
-        switch op {
-        case "+":
-            return AddOperation().calculate(firstNumber, secondNumber)
-        case "-":
-            return SubstractOperation().calculate(firstNumber, secondNumber)
-        case "*":
-            return MultiplyOperation().calculate(firstNumber, secondNumber)
-        case "/":
-            return DivideOperation().calculate(firstNumber, secondNumber)
-        case "%":
-            return RemainderOperation().calculate(firstNumber, secondNumber)
-        default:
-            return 0
-        }
+    func calculate(operation op: AbstractOperation, firstNumber: Double, secondNumber: Double) -> Double {
+        op.calculate(firstNumber, secondNumber)
     }
 }
 
 let calculator = Calculator()
-let addResult = calculator.calculate(operator: "+", firstNumber: 10, secondNumber: 20)
-let subResult = calculator.calculate(operator: "-", firstNumber: 10, secondNumber: 20)
-let mulResult = calculator.calculate(operator: "*", firstNumber: 10, secondNumber: 20)
-let divResult = calculator.calculate(operator: "/", firstNumber: 10, secondNumber: 20)
-let modResult = calculator.calculate(operator: "%", firstNumber: 10, secondNumber: 20)
-let modResultWithZero = calculator.calculate(operator: "%", firstNumber: 10, secondNumber: 0)
+let addResult = calculator.calculate(operation: AddOperation(), firstNumber: 10, secondNumber: 20)
+let subResult = calculator.calculate(operation: SubstractOperation(), firstNumber: 10, secondNumber: 20)
+let mulResult = calculator.calculate(operation: MultiplyOperation(), firstNumber: 10, secondNumber: 20)
+let divResult = calculator.calculate(operation: DivideOperation(), firstNumber: 10, secondNumber: 20)
+let modResult = calculator.calculate(operation: RemainderOperation(), firstNumber: 10, secondNumber: 20)
+let modResultWithZero = calculator.calculate(operation: RemainderOperation(), firstNumber: 10, secondNumber: 0)
