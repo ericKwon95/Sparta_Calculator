@@ -1,5 +1,9 @@
 import Foundation
 
+protocol AbstractOperation {
+    func calculate(_ a: Double, _ b: Double) -> Double
+}
+
 class AddOperation {
     func add(_ a: Double, _ b: Double) -> Double {
         return a + b
