@@ -8,6 +8,12 @@ protocol AbstractOperation {
 /// 덧셈 연산을 담당하는 클래스
 class AddOperation: AbstractOperation {
     func calculate(_ a: Double, _ b: Double) -> Double {
+        let result = a + b
+        
+        // overflow 체크
+        guard result.isFinite else {
+            return .infinity
+        }
         return a + b
     }
 }
@@ -15,6 +21,12 @@ class AddOperation: AbstractOperation {
 /// 뺄셈 연산을 담당하는 클래스
 class SubstractOperation: AbstractOperation {
     func calculate(_ a: Double, _ b: Double) -> Double {
+        let result = a - b
+        
+        // overflow 체크
+        guard result.isFinite else {
+            return .infinity
+        }
         return a - b
     }
 }
@@ -22,6 +34,12 @@ class SubstractOperation: AbstractOperation {
 /// 곱셈 연산을 담당하는 클래스
 class MultiplyOperation: AbstractOperation {
     func calculate(_ a: Double, _ b: Double) -> Double {
+        let result = a * b
+        
+        // overflow 체크
+        guard result.isFinite else {
+            return .infinity
+        }
         return a * b
     }
 }
@@ -29,6 +47,17 @@ class MultiplyOperation: AbstractOperation {
 /// 나눗셈 연산을 담당하는 클래스
 class DivideOperation: AbstractOperation {
     func calculate(_ a: Double, _ b: Double) -> Double {
+        // 0으로 나눴을 때 체크
+        guard b != 0 else {
+            return .infinity
+        }
+        
+        let result = a / b
+        
+        // overflow 체크
+        guard result.isFinite else {
+            return .infinity
+        }
         return a / b
     }
 }
@@ -36,9 +65,11 @@ class DivideOperation: AbstractOperation {
 /// 나머지 연산을 담당하는 클래스
 class RemainderOperation: AbstractOperation {
     func calculate(_ a: Double, _ b: Double) -> Double {
+        // 0으로 나눴을 때 체크
         guard b != 0 else {
             return .infinity
         }
+        
         return a.truncatingRemainder(dividingBy: b)
     }
 }
