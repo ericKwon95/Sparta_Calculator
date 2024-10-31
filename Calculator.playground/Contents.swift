@@ -4,32 +4,32 @@ protocol AbstractOperation {
     func calculate(_ a: Double, _ b: Double) -> Double
 }
 
-class AddOperation {
-    func add(_ a: Double, _ b: Double) -> Double {
+class AddOperation: AbstractOperation {
+    func calculate(_ a: Double, _ b: Double) -> Double {
         return a + b
     }
 }
 
-class SubstractOperation {
-    func substract(_ a: Double, _ b: Double) -> Double {
+class SubstractOperation: AbstractOperation {
+    func calculate(_ a: Double, _ b: Double) -> Double {
         return a - b
     }
 }
 
-class MultiplyOperation {
-    func multiply(_ a: Double, _ b: Double) -> Double {
+class MultiplyOperation: AbstractOperation {
+    func calculate(_ a: Double, _ b: Double) -> Double {
         return a * b
     }
 }
 
-class DivideOperation {
-    func divide(_ a: Double, _ b: Double) -> Double {
+class DivideOperation: AbstractOperation {
+    func calculate(_ a: Double, _ b: Double) -> Double {
         return a / b
     }
 }
 
-class RemainderOperation {
-    func remainder(_ a: Double, _ b: Double) -> Double {
+class RemainderOperation: AbstractOperation {
+    func calculate(_ a: Double, _ b: Double) -> Double {
         guard b != 0 else {
             return .infinity
         }
@@ -42,15 +42,15 @@ class Calculator {
     func calculate(operator op: String, firstNumber: Double, secondNumber: Double) -> Double {
         switch op {
         case "+":
-            return AddOperation().add(firstNumber, secondNumber)
+            return AddOperation().calculate(firstNumber, secondNumber)
         case "-":
-            return SubstractOperation().substract(firstNumber, secondNumber)
+            return SubstractOperation().calculate(firstNumber, secondNumber)
         case "*":
-            return MultiplyOperation().multiply(firstNumber, secondNumber)
+            return MultiplyOperation().calculate(firstNumber, secondNumber)
         case "/":
-            return DivideOperation().divide(firstNumber, secondNumber)
+            return DivideOperation().calculate(firstNumber, secondNumber)
         case "%":
-            return RemainderOperation().remainder(firstNumber, secondNumber)
+            return RemainderOperation().calculate(firstNumber, secondNumber)
         default:
             return 0
         }
